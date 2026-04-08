@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial;
+  background: linear-gradient(135deg, white, #fff5cc);
+  text-align: center;
+}
+
+/* Heading */
+h1 {
+  margin-top: 60px;
+  font-size: 3em;
+  color: #ff4d4d;
+}
+
+/* Message */
+p {
+  font-size: 20px;
+  color: #333;
+}
+
+/* Image */
+img {
+  width: 260px;
+  border-radius: 20px;
+  margin-top: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+/* Button */
+button {
+  padding: 12px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 20px;
+  background: #ff4d4d;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button:hover {
+  background: #e60000;
+}
+
+/* Hearts */
+.heart {
+  position: absolute;
+  font-size: 22px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Happy Birthday 💛</h1>
+<p>You are truly special ✨</p>
+
+<img src="girl.jpg" alt="Her Photo">
+
+<br>
+
+<button onclick="playMusic()">Play Music 🎵</button>
+
+<audio id="music" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function playMusic() {
+  document.getElementById("music").play();
+}
+
+// Heart logic (10:1 red ratio)
+let count = 0;
+
+setInterval(() => {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+
+  count++;
+
+  if (count % 10 === 0) {
+    heart.innerHTML = "❤️"; // red heart
+  } else {
+    let colors = ["🤍", "💛"];
+    heart.innerHTML = colors[Math.floor(Math.random() * colors.length)];
+  }
+
+  heart.style.left = Math.random() * 100 + "vw";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+
+}, 300);
+</script>
+
+</body>
+</html>
